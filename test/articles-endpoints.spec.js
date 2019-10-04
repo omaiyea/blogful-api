@@ -65,7 +65,7 @@ describe('Articles Endpoints', function(){
         })
     })
 
-    describe.only('GET /api/article/:article_id', () => {
+    describe('GET /api/article/:article_id', () => {
         context(`Given there are articles in the database`, () => {
             context(`Given an XSS attack article`, () => {
                 const maliciousArticle = {
@@ -115,7 +115,7 @@ describe('Articles Endpoints', function(){
         })
     })
 
-    describe.only(`POST /api/articles`, () => {
+    describe(`POST /api/articles`, () => {
         it(`creates an article, responding with 201 and the new article`, function(){
             this.retries(3)
             const newArticle = {
@@ -166,7 +166,7 @@ describe('Articles Endpoints', function(){
         })
     })
 
-    describe.only(`DELETE /api/articles/:article_id`, () => {
+    describe(`DELETE /api/articles/:article_id`, () => {
         context(`Given there are articles in the database`, () => {
             const testArticles = makeArticlesArray()
 
@@ -196,7 +196,7 @@ describe('Articles Endpoints', function(){
         })
     })
 
-    describe.only(`PATCH /api/articles/:article_id`, () => {
+    describe(`PATCH /api/articles/:article_id`, () => {
         context(`Given no articles`, () => {
             it(`responds with 404`, () => {
                 const articleId = 123456
