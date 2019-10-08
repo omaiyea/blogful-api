@@ -12,6 +12,7 @@ const serializeArticle = article => ({
   title: xss(article.title), //sanitize title
   content: xss(article.content), //sanitize content
   date_published: article.date_published,
+  author: article.author,
 })
 
 articlesRouter
@@ -24,7 +25,7 @@ articlesRouter
       .catch(next)
   })
   .post(jsonParser, (req, res, next) => {
-    const { title, content, style } = req.body
+    const { title, content, style, author } = req.body
     const newArticle = { title, content, style }
 
     for(const [key, value] of Object.entries(newArticle)){
@@ -34,6 +35,8 @@ articlesRouter
             })
         }
     }
+
+    newArticle.author = author
 
     ArticlesService.insertArticle(
       req.app.get('db'),
