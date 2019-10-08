@@ -9,6 +9,7 @@ const app = express();
 
 const { NODE_ENV } = require('./config');
 const articlesRouter = require('./articles/articles-router');
+const usersRouter = require('./users/users-router');
 
 const morganOption = (NODE_ENV === 'production' ? 'tiny' : 'common');
 
@@ -17,6 +18,7 @@ app.use(helmet());
 app.use(cors());
 
 app.use('/api/articles', articlesRouter)
+app.use('/api/users', usersRouter)
 
 app.get('/', (req, res) => {
   res.send('Hello, world!')
